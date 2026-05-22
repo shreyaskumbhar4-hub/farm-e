@@ -123,7 +123,7 @@ function HomeScreen({ weather, setTab }) {
             { icon:<BookOpen size={24} color={C.moss}/>,    label:"Farm Diary", sub:"Daily log & alarms", id:"diary",  bg:"#F4FAF0" },
             { icon:<TrendingUp size={24} color="#1565C0"/>, label:"Market",     sub:"Live mandi rates",   id:"market", bg:"#F0F4FF" },
           ].map(({ icon, label, sub, id, bg }) => (
-            <button key={id} onClick={() => setTab(id)} style={{ background:bg, border:"1.5px solid rgba(0,0,0,0.05)", borderRadius:16, padding:"15px 13px", textAlign:"left", cursor:"pointer", boxShadow:"0 2px 8px rgba(0,0,0,0.05)" }}>
+            <button key={id} type="button" onClick={() => setTab(id)} style={{ background:bg, border:"1.5px solid rgba(0,0,0,0.05)", borderRadius:16, padding:"15px 13px", textAlign:"left", cursor:"pointer", boxShadow:"0 2px 8px rgba(0,0,0,0.05)" }}>
               {icon}
               <p style={{ margin:"10px 0 2px", fontWeight:700, fontSize:13, color:C.soil, fontFamily:"Georgia,serif" }}>{label}</p>
               <p style={{ margin:0, fontSize:11, color:"#999" }}>{sub}</p>
@@ -135,7 +135,7 @@ function HomeScreen({ weather, setTab }) {
       <div style={{ padding:"18px 14px 24px" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12 }}>
           <h2 style={{ fontSize:16, fontWeight:700, color:C.soil, margin:0, fontFamily:"Georgia,serif" }}>Mandi Rates</h2>
-          <button onClick={() => setTab("market")} style={{ background:"none", border:"none", color:C.sprout, fontSize:12, fontWeight:600, cursor:"pointer", display:"flex", alignItems:"center", gap:3 }}>
+          <button type="button" onClick={() => setTab("market")} style={{ background:"none", border:"none", color:C.sprout, fontSize:12, fontWeight:600, cursor:"pointer", display:"flex", alignItems:"center", gap:3 }}>
             View all <ChevronRight size={13}/>
           </button>
         </div>
@@ -174,7 +174,7 @@ function WeatherScreen({ city, setCity, weather, forecast, wxLoading, fetchWeath
               style={{ flex:1, border:"none", background:"none", padding:"12px 4px", outline:"none", fontSize:13, color:C.soil }}
             />
           </div>
-          <button onClick={() => fetchWeather(city)} style={{ background:C.leaf, color:"#fff", border:"none", borderRadius:12, padding:"0 16px", cursor:"pointer", display:"flex", alignItems:"center" }}>
+          <button type="button" onClick={() => fetchWeather(city)} style={{ background:C.leaf, color:"#fff", border:"none", borderRadius:12, padding:"0 16px", cursor:"pointer", display:"flex", alignItems:"center" }}>
             {wxLoading ? <RefreshCw size={15} style={{ animation:"spin 0.8s linear infinite" }}/> : <Search size={15}/>}
           </button>
         </div>
@@ -288,7 +288,7 @@ function AIScreen({ messages, input, setInput, sendMessage, chatLoading, msgEnd 
           <div style={{ display:"flex", flexDirection:"column", gap:7, marginBottom:6 }}>
             <p style={{ margin:0, fontSize:11, color:"#bbb", textAlign:"center" }}>Suggested questions</p>
             {["How to treat rice blast disease?","Best fertilizer for wheat?","When to irrigate cotton?","Govt schemes for farmers 2024"].map(q => (
-              <button key={q} onClick={() => setInput(q)} style={{ background:C.mist, border:`1px solid ${C.fog}`, borderRadius:10, padding:"10px 13px", cursor:"pointer", textAlign:"left", fontSize:12, color:C.bark }}>{q}</button>
+              <button key={q} type="button" onClick={() => setInput(q)} style={{ background:C.mist, border:`1px solid ${C.fog}`, borderRadius:10, padding:"10px 13px", cursor:"pointer", textAlign:"left", fontSize:12, color:C.bark }}>{q}</button>
             ))}
           </div>
         )}
@@ -339,7 +339,7 @@ function AIScreen({ messages, input, setInput, sendMessage, chatLoading, msgEnd 
               style={{ width:"100%", border:"none", background:"none", outline:"none", fontSize:13, color:C.soil, resize:"none", lineHeight:1.5, fontFamily:"inherit", maxHeight:100, display:"block" }}
             />
           </div>
-          <button onClick={sendMessage} disabled={chatLoading||!input.trim()} style={{ width:44, height:44, background:input.trim()?`linear-gradient(135deg,${C.leaf},${C.sprout})`:"#eee", border:"none", borderRadius:13, cursor:input.trim()?"pointer":"not-allowed", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+          <button type="button" onClick={sendMessage} disabled={chatLoading||!input.trim()} style={{ width:44, height:44, background:input.trim()?`linear-gradient(135deg,${C.leaf},${C.sprout})`:"#eee", border:"none", borderRadius:13, cursor:input.trim()?"pointer":"not-allowed", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
             <Send size={17} color={input.trim()?"#fff":"#ccc"}/>
           </button>
         </div>
@@ -355,7 +355,7 @@ function CropsScreen({ selCrop, setSelCrop, setTab, setInput }) {
       <p style={{ color:"#aaa", fontSize:12, margin:"0 0 18px" }}>Advisory & growth stage tracker</p>
       {selCrop ? (
         <div>
-          <button onClick={() => setSelCrop(null)} style={{ background:"none", border:"none", color:C.sprout, fontWeight:600, cursor:"pointer", marginBottom:14, display:"flex", alignItems:"center", gap:4, fontSize:13 }}>
+          <button type="button" onClick={() => setSelCrop(null)} style={{ background:"none", border:"none", color:C.sprout, fontWeight:600, cursor:"pointer", marginBottom:14, display:"flex", alignItems:"center", gap:4, fontSize:13 }}>
             ← Back to Crops
           </button>
           <div style={{ background:"#fff", borderRadius:20, padding:22, boxShadow:"0 4px 20px rgba(0,0,0,0.08)" }}>
@@ -376,7 +376,7 @@ function CropsScreen({ selCrop, setSelCrop, setTab, setInput }) {
                 <p style={{ margin:0, fontSize:12, color:C.bark }}>{a}</p>
               </div>
             ))}
-            <button onClick={() => { setTab("ai"); setInput(`Give me detailed advice for ${selCrop.crop} at ${selCrop.stage} stage`); }}
+            <button type="button" onClick={() => { setTab("ai"); setInput(`Give me detailed advice for ${selCrop.crop} at ${selCrop.stage} stage`); }}
               style={{ width:"100%", background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:12, padding:"13px", marginTop:14, fontSize:13, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}>
               <Bot size={15}/> Ask AI for Detailed Advice
             </button>
@@ -385,7 +385,7 @@ function CropsScreen({ selCrop, setSelCrop, setTab, setInput }) {
       ) : (
         <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
           {CROP_TIPS.map(crop => (
-            <button key={crop.crop} onClick={() => setSelCrop(crop)} style={{ background:"#fff", border:crop.alert?"1.5px solid #FFA726":"1.5px solid transparent", borderRadius:16, padding:15, cursor:"pointer", textAlign:"left", boxShadow:"0 2px 10px rgba(0,0,0,0.06)", display:"flex", alignItems:"center", gap:13 }}>
+            <button type="button" key={crop.crop} onClick={() => setSelCrop(crop)} style={{ background:"#fff", border:crop.alert?"1.5px solid #FFA726":"1.5px solid transparent", borderRadius:16, padding:15, cursor:"pointer", textAlign:"left", boxShadow:"0 2px 10px rgba(0,0,0,0.06)", display:"flex", alignItems:"center", gap:13 }}>
               <span style={{ fontSize:34 }}>{crop.icon}</span>
               <div style={{ flex:1 }}>
                 <div style={{ display:"flex", alignItems:"center", gap:7, marginBottom:4 }}>
@@ -398,7 +398,7 @@ function CropsScreen({ selCrop, setSelCrop, setTab, setInput }) {
               <ChevronRight size={16} color="#ddd"/>
             </button>
           ))}
-          <button style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, border:"none", borderRadius:16, padding:"15px", cursor:"pointer", color:"#fff", fontSize:13, fontWeight:700, display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}>
+          <button type="button" style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, border:"none", borderRadius:16, padding:"15px", cursor:"pointer", color:"#fff", fontSize:13, fontWeight:700, display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}>
             <Sprout size={16}/> Add New Crop
           </button>
         </div>
@@ -453,7 +453,7 @@ function DiaryCalendar({ logs, calMonth, setCalMonth, setDiaryDate, setDiaryView
           <h2 style={{ fontSize:22, fontWeight:700, color:C.soil, margin:0, fontFamily:"Georgia,serif" }}>Farm Diary</h2>
           <p style={{ color:"#aaa", fontSize:12, margin:"3px 0 0" }}>Daily field activity log</p>
         </div>
-        <button onClick={() => openNewLog(todayKey())} style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:12, padding:"9px 15px", cursor:"pointer", display:"flex", alignItems:"center", gap:6, fontSize:13, fontWeight:700 }}>
+        <button type="button" onClick={() => openNewLog(todayKey())} style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:12, padding:"9px 15px", cursor:"pointer", display:"flex", alignItems:"center", gap:6, fontSize:13, fontWeight:700 }}>
           <Plus size={15}/> Today
         </button>
       </div>
@@ -474,12 +474,12 @@ function DiaryCalendar({ logs, calMonth, setCalMonth, setDiaryDate, setDiaryView
 
       <div style={{ background:"#fff", borderRadius:20, padding:"16px 14px", boxShadow:"0 4px 18px rgba(0,0,0,0.07)" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:16 }}>
-          <button onClick={() => setCalMonth(p => { const d=new Date(p.y,p.m-1,1); return {y:d.getFullYear(),m:d.getMonth()}; })}
+          <button type="button" onClick={() => setCalMonth(p => { const d=new Date(p.y,p.m-1,1); return {y:d.getFullYear(),m:d.getMonth()}; })}
             style={{ background:C.fog, border:"none", borderRadius:9, width:34, height:34, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>
             <ChevronLeft size={18} color={C.soil}/>
           </button>
           <p style={{ margin:0, fontWeight:700, fontSize:15, color:C.soil, fontFamily:"Georgia,serif" }}>{monthName}</p>
-          <button onClick={() => setCalMonth(p => { const d=new Date(p.y,p.m+1,1); return {y:d.getFullYear(),m:d.getMonth()}; })}
+          <button type="button" onClick={() => setCalMonth(p => { const d=new Date(p.y,p.m+1,1); return {y:d.getFullYear(),m:d.getMonth()}; })}
             style={{ background:C.fog, border:"none", borderRadius:9, width:34, height:34, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>
             <ChevronRight size={18} color={C.soil}/>
           </button>
@@ -499,7 +499,7 @@ function DiaryCalendar({ logs, calMonth, setCalMonth, setDiaryDate, setDiaryView
             const hasAlarm = log?.alarms?.some(a => !a.done);
             const hasPhoto = (log?.photos?.length||0)>0;
             return (
-              <button key={dk} onClick={() => { setDiaryDate(dk); setDiaryView("day"); }}
+              <button type="button" key={dk}  onClick={() => { setDiaryDate(dk); setDiaryView("day"); }}
                 style={{ aspectRatio:"1", border:"none", borderRadius:10, cursor:"pointer", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:1,
                   background:isToday?`linear-gradient(135deg,${C.leaf},${C.sprout})`:hasLog?"#F0FFF0":"transparent",
                   boxShadow:isToday?`0 3px 10px rgba(74,124,47,0.35)`:"none" }}>
@@ -530,7 +530,7 @@ function DiaryCalendar({ logs, calMonth, setCalMonth, setDiaryDate, setDiaryView
           <h3 style={{ fontSize:15, fontWeight:700, color:C.soil, margin:"0 0 12px", fontFamily:"Georgia,serif" }}>Recent Entries</h3>
           <div style={{ display:"flex", flexDirection:"column", gap:9 }}>
             {Object.entries(logs).sort(([a],[b])=>b.localeCompare(a)).slice(0,5).map(([dk, log]) => (
-              <button key={dk} onClick={() => { setDiaryDate(dk); setDiaryView("day"); }}
+              <button type="button" key={dk} onClick={() => { setDiaryDate(dk); setDiaryView("day"); }}
                 style={{ background:"#fff", border:"none", borderRadius:14, padding:"13px 15px", cursor:"pointer", textAlign:"left", boxShadow:"0 2px 8px rgba(0,0,0,0.06)", display:"flex", alignItems:"center", gap:12 }}>
                 <div style={{ width:42, height:42, background:C.fog, borderRadius:10, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
                   <span style={{ fontSize:11, fontWeight:700, color:C.soil }}>{new Date(dk+"T00:00:00").getDate()}</span>
@@ -562,14 +562,14 @@ function DiaryDayView({ logs, diaryDate, setDiaryView, openNewLog, deleteLog, to
   return (
     <div style={{ padding:"18px 14px 24px" }}>
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:18 }}>
-        <button onClick={() => setDiaryView("calendar")} style={{ background:"none", border:"none", color:C.sprout, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:13 }}>
+        <button type="button" onClick={() => setDiaryView("calendar")} style={{ background:"none", border:"none", color:C.sprout, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:13 }}>
           <ChevronLeft size={16}/> Diary
         </button>
         <div style={{ display:"flex", gap:8 }}>
-          {log && <button onClick={() => deleteLog(diaryDate)} style={{ background:"#FFF5F5", border:"1px solid #FFCDD2", color:"#C62828", borderRadius:9, padding:"7px 12px", cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:12, fontWeight:600 }}>
+          {log && <button type="button" onClick={() => deleteLog(diaryDate)} style={{ background:"#FFF5F5", border:"1px solid #FFCDD2", color:"#C62828", borderRadius:9, padding:"7px 12px", cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:12, fontWeight:600 }}>
             <Trash2 size={13}/> Delete
           </button>}
-          <button onClick={() => openNewLog(diaryDate)} style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:9, padding:"7px 14px", cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:12, fontWeight:700 }}>
+          <button type="button" onClick={() => openNewLog(diaryDate)} style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:9, padding:"7px 14px", cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:12, fontWeight:700 }}>
             <Edit3 size={13}/> {log?"Edit":"Add Log"}
           </button>
         </div>
@@ -594,7 +594,7 @@ function DiaryDayView({ logs, diaryDate, setDiaryView, openNewLog, deleteLog, to
           <FileText size={52} color="#ddd" style={{ marginBottom:14 }}/>
           <p style={{ color:"#bbb", fontSize:15, fontWeight:600 }}>No log for this day</p>
           <p style={{ color:"#ccc", fontSize:12, marginBottom:20 }}>Tap "Add Log" to document your farm activities</p>
-          <button onClick={() => openNewLog(diaryDate)} style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:12, padding:"12px 24px", cursor:"pointer", fontSize:14, fontWeight:700, display:"inline-flex", alignItems:"center", gap:8 }}>
+          <button type="button" onClick={() => openNewLog(diaryDate)} style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:12, padding:"12px 24px", cursor:"pointer", fontSize:14, fontWeight:700, display:"inline-flex", alignItems:"center", gap:8 }}>
             <Plus size={16}/> Add Log Entry
           </button>
         </div>
@@ -659,7 +659,7 @@ function DiaryDayView({ logs, diaryDate, setDiaryView, openNewLog, deleteLog, to
               </div>
               {log.alarms.map((alarm,i) => (
                 <div key={alarm.id||i} style={{ display:"flex", gap:12, alignItems:"center", padding:"10px 0", borderBottom:i<log.alarms.length-1?"1px solid #F5F5F5":"none" }}>
-                  <button onClick={() => toggleAlarmDone(alarm.id)} style={{ width:28, height:28, borderRadius:"50%", border:`2px solid ${alarm.done?C.sprout:"#ddd"}`, background:alarm.done?C.sprout:"#fff", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+                  <button type="button" onClick={() => toggleAlarmDone(alarm.id)} style={{ width:28, height:28, borderRadius:"50%", border:`2px solid ${alarm.done?C.sprout:"#ddd"}`, background:alarm.done?C.sprout:"#fff", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
                     {alarm.done && <Check size={14} color="#fff"/>}
                   </button>
                   <div style={{ flex:1 }}>
@@ -693,13 +693,13 @@ function DiaryNewLog({
   return (
     <div style={{ padding:"18px 14px 24px" }}>
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:18 }}>
-        <button onClick={() => setDiaryView("day")} style={{ background:"none", border:"none", color:C.sprout, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:13 }}>
+        <button type="button" onClick={() => setDiaryView("day")} style={{ background:"none", border:"none", color:C.sprout, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:13 }}>
           <ChevronLeft size={16}/> Back
         </button>
         <p style={{ margin:0, fontWeight:700, fontSize:14, color:C.soil, fontFamily:"Georgia,serif" }}>
           {new Date(diaryDate+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})}
         </p>
-        <button onClick={saveLog} style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:10, padding:"8px 16px", cursor:"pointer", display:"flex", alignItems:"center", gap:5, fontSize:13, fontWeight:700 }}>
+        <button type="button" onClick={saveLog} style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:10, padding:"8px 16px", cursor:"pointer", display:"flex", alignItems:"center", gap:5, fontSize:13, fontWeight:700 }}>
           <Save size={14}/> Save
         </button>
       </div>
@@ -726,7 +726,7 @@ function DiaryNewLog({
             <Sprout size={16} color={C.sprout}/>
             <p style={{ margin:0, fontWeight:700, fontSize:14, color:C.soil }}>Activities</p>
           </div>
-          <button onClick={() => setAddActOpen(v=>!v)} style={{ background:C.fog, border:"none", borderRadius:8, padding:"6px 12px", cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:12, fontWeight:600, color:C.leaf }}>
+          <button type="button" onClick={() => setAddActOpen(v=>!v)} style={{ background:C.fog, border:"none", borderRadius:8, padding:"6px 12px", cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:12, fontWeight:600, color:C.leaf }}>
             <Plus size={13}/> Add
           </button>
         </div>
@@ -741,7 +741,7 @@ function DiaryNewLog({
                 <p style={{ margin:0, fontWeight:600, fontSize:13, color:C.soil }}>{type.label} <span style={{ color:"#aaa", fontWeight:400 }}>· {act.time}</span></p>
                 {act.note && <p style={{ margin:0, fontSize:11, color:"#aaa" }}>{act.note}</p>}
               </div>
-              <button onClick={() => setLogActivity(p=>p.filter((_,j)=>j!==i))} style={{ background:"none", border:"none", cursor:"pointer", padding:4 }}>
+              <button type="button" onClick={() => setLogActivity(p=>p.filter((_,j)=>j!==i))} style={{ background:"none", border:"none", cursor:"pointer", padding:4 }}>
                 <X size={14} color="#ccc"/>
               </button>
             </div>
@@ -752,7 +752,7 @@ function DiaryNewLog({
             <p style={{ margin:"0 0 10px", fontWeight:700, fontSize:13, color:C.soil }}>New Activity</p>
             <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:6, marginBottom:10 }}>
               {ACTIVITY_TYPES.map(t => (
-                <button key={t.id} onClick={() => setNewAct(p=>({...p,type:t.id}))} style={{ background:newAct.type===t.id?`${t.color}20`:"#fff", border:`1.5px solid ${newAct.type===t.id?t.color:"#EEE"}`, borderRadius:10, padding:"8px 4px", cursor:"pointer", display:"flex", flexDirection:"column", alignItems:"center", gap:3 }}>
+                <button type="button" key={t.id} onClick={() => setNewAct(p=>({...p,type:t.id}))} style={{ background:newAct.type===t.id?`${t.color}20`:"#fff", border:`1.5px solid ${newAct.type===t.id?t.color:"#EEE"}`, borderRadius:10, padding:"8px 4px", cursor:"pointer", display:"flex", flexDirection:"column", alignItems:"center", gap:3 }}>
                   <span style={{ fontSize:18 }}>{t.icon}</span>
                   <span style={{ fontSize:9, fontWeight:600, color:newAct.type===t.id?t.color:C.soil }}>{t.label}</span>
                 </button>
@@ -771,8 +771,8 @@ function DiaryNewLog({
               </div>
             </div>
             <div style={{ display:"flex", gap:8 }}>
-              <button onClick={() => setAddActOpen(false)} style={{ flex:1, background:"#EEE", border:"none", borderRadius:9, padding:"9px", cursor:"pointer", fontSize:13, fontWeight:600, color:"#888" }}>Cancel</button>
-              <button onClick={addActivity} style={{ flex:2, background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, border:"none", borderRadius:9, padding:"9px", cursor:"pointer", fontSize:13, fontWeight:700, color:"#fff" }}>Add Activity</button>
+              <button type="button" onClick={() => setAddActOpen(false)} style={{ flex:1, background:"#EEE", border:"none", borderRadius:9, padding:"9px", cursor:"pointer", fontSize:13, fontWeight:600, color:"#888" }}>Cancel</button>
+              <button type="button" onClick={addActivity} style={{ flex:2, background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, border:"none", borderRadius:9, padding:"9px", cursor:"pointer", fontSize:13, fontWeight:700, color:"#fff" }}>Add Activity</button>
             </div>
           </div>
         )}
@@ -785,13 +785,13 @@ function DiaryNewLog({
             <Camera size={16} color="#2196F3"/>
             <p style={{ margin:0, fontWeight:700, fontSize:14, color:C.soil }}>Photos</p>
           </div>
-          <button onClick={() => photoInputRef.current?.click()} style={{ background:"#E3F2FD", border:"none", borderRadius:8, padding:"6px 12px", cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:12, fontWeight:600, color:"#2196F3" }}>
+          <button type="button" onClick={() => photoInputRef.current?.click()} style={{ background:"#E3F2FD", border:"none", borderRadius:8, padding:"6px 12px", cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:12, fontWeight:600, color:"#2196F3" }}>
             <Camera size={13}/> Take Photo
           </button>
           <input ref={photoInputRef} type="file" accept="image/*" capture="environment" onChange={handlePhotoCapture} style={{ display:"none" }}/>
         </div>
         {logPhotos.length===0 ? (
-          <button onClick={() => photoInputRef.current?.click()} style={{ width:"100%", border:"2px dashed #ddd", borderRadius:12, padding:"20px", cursor:"pointer", background:"transparent", display:"flex", flexDirection:"column", alignItems:"center", gap:8 }}>
+          <button type="button" onClick={() => photoInputRef.current?.click()} style={{ width:"100%", border:"2px dashed #ddd", borderRadius:12, padding:"20px", cursor:"pointer", background:"transparent", display:"flex", flexDirection:"column", alignItems:"center", gap:8 }}>
             <Camera size={28} color="#ddd"/>
             <p style={{ margin:0, fontSize:12, color:"#ccc" }}>Tap to capture field photo</p>
           </button>
@@ -800,12 +800,12 @@ function DiaryNewLog({
             {logPhotos.map((p,i) => (
               <div key={i} style={{ position:"relative", aspectRatio:"1", borderRadius:10, overflow:"hidden" }}>
                 <img src={p} alt={`Photo ${i+1}`} style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
-                <button onClick={() => setLogPhotos(prev=>prev.filter((_,j)=>j!==i))} style={{ position:"absolute", top:4, right:4, background:"rgba(0,0,0,0.6)", border:"none", borderRadius:"50%", width:22, height:22, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <button type="button" onClick={() => setLogPhotos(prev=>prev.filter((_,j)=>j!==i))} style={{ position:"absolute", top:4, right:4, background:"rgba(0,0,0,0.6)", border:"none", borderRadius:"50%", width:22, height:22, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>
                   <X size={12} color="#fff"/>
                 </button>
               </div>
             ))}
-            <button onClick={() => photoInputRef.current?.click()} style={{ aspectRatio:"1", border:"2px dashed #ddd", borderRadius:10, cursor:"pointer", background:"transparent", display:"flex", alignItems:"center", justifyContent:"center" }}>
+            <button type="button" onClick={() => photoInputRef.current?.click()} style={{ aspectRatio:"1", border:"2px dashed #ddd", borderRadius:10, cursor:"pointer", background:"transparent", display:"flex", alignItems:"center", justifyContent:"center" }}>
               <Plus size={22} color="#ddd"/>
             </button>
           </div>
@@ -819,7 +819,7 @@ function DiaryNewLog({
             <AlarmClock size={16} color={C.amber}/>
             <p style={{ margin:0, fontWeight:700, fontSize:14, color:C.soil }}>Reminders & Alarms</p>
           </div>
-          <button onClick={() => { requestNotifPerm(); setAddAlarmOpen(v=>!v); }} style={{ background:"#FFF3E0", border:"none", borderRadius:8, padding:"6px 12px", cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:12, fontWeight:600, color:C.amber }}>
+          <button type="button" onClick={() => { requestNotifPerm(); setAddAlarmOpen(v=>!v); }} style={{ background:"#FFF3E0", border:"none", borderRadius:8, padding:"6px 12px", cursor:"pointer", display:"flex", alignItems:"center", gap:4, fontSize:12, fontWeight:600, color:C.amber }}>
             <Plus size={13}/> Add
           </button>
         </div>
@@ -832,7 +832,7 @@ function DiaryNewLog({
               <p style={{ margin:0, fontWeight:600, fontSize:13, color:alarm.done?"#aaa":C.soil, textDecoration:alarm.done?"line-through":"none" }}>{alarm.label}</p>
               <p style={{ margin:0, fontSize:11, color:"#aaa" }}>{alarm.time}</p>
             </div>
-            <button onClick={() => setLogAlarms(p=>p.filter((_,j)=>j!==i))} style={{ background:"none", border:"none", cursor:"pointer", padding:4 }}>
+            <button type="button" onClick={() => setLogAlarms(p=>p.filter((_,j)=>j!==i))} style={{ background:"none", border:"none", cursor:"pointer", padding:4 }}>
               <X size={14} color="#ccc"/>
             </button>
           </div>
@@ -853,14 +853,14 @@ function DiaryNewLog({
               </div>
             </div>
             <div style={{ display:"flex", gap:8 }}>
-              <button onClick={() => setAddAlarmOpen(false)} style={{ flex:1, background:"#EEE", border:"none", borderRadius:9, padding:"9px", cursor:"pointer", fontSize:13, fontWeight:600, color:"#888" }}>Cancel</button>
-              <button onClick={addAlarm} style={{ flex:2, background:`linear-gradient(135deg,${C.amber},${C.gold})`, border:"none", borderRadius:9, padding:"9px", cursor:"pointer", fontSize:13, fontWeight:700, color:"#fff" }}>Set Alarm</button>
+              <button type="button" onClick={() => setAddAlarmOpen(false)} style={{ flex:1, background:"#EEE", border:"none", borderRadius:9, padding:"9px", cursor:"pointer", fontSize:13, fontWeight:600, color:"#888" }}>Cancel</button>
+              <button type="button" onClick={addAlarm} style={{ flex:2, background:`linear-gradient(135deg,${C.amber},${C.gold})`, border:"none", borderRadius:9, padding:"9px", cursor:"pointer", fontSize:13, fontWeight:700, color:"#fff" }}>Set Alarm</button>
             </div>
           </div>
         )}
       </div>
 
-      <button onClick={saveLog} style={{ width:"100%", background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:14, padding:"15px", fontSize:15, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}>
+      <button type="button" onClick={saveLog} style={{ width:"100%", background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:14, padding:"15px", fontSize:15, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}>
         <Save size={17}/> Save Log Entry
       </button>
     </div>
@@ -876,7 +876,7 @@ function ProfileScreen({ user, email, setEmail, password, setPassword, authMode,
           <div style={{ background:"#fff", borderRadius:20, padding:22, boxShadow:"0 4px 18px rgba(0,0,0,0.08)", marginBottom:16 }}>
             <div style={{ display:"flex", gap:4, marginBottom:22, background:C.fog, borderRadius:11, padding:4 }}>
               {["login","signup"].map(m => (
-                <button key={m} onClick={() => setAuthMode(m)} style={{ flex:1, padding:"10px", border:"none", borderRadius:9, cursor:"pointer", background:authMode===m?"#fff":"transparent", color:authMode===m?C.leaf:"#bbb", fontWeight:700, fontSize:13, boxShadow:authMode===m?"0 1px 4px rgba(0,0,0,0.1)":"none", transition:"all 0.2s" }}>
+                <button type="button" key={m} onClick={() => setAuthMode(m)} style={{ flex:1, padding:"10px", border:"none", borderRadius:9, cursor:"pointer", background:authMode===m?"#fff":"transparent", color:authMode===m?C.leaf:"#bbb", fontWeight:700, fontSize:13, boxShadow:authMode===m?"0 1px 4px rgba(0,0,0,0.1)":"none", transition:"all 0.2s" }}>
                   {m==="login"?"Log In":"Sign Up"}
                 </button>
               ))}
@@ -892,7 +892,7 @@ function ProfileScreen({ user, email, setEmail, password, setPassword, authMode,
                 <input type="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} onKeyDown={e=>e.key==="Enter"&&handleAuth()}
                   style={{ flex:1, border:"none", background:"none", padding:"12px 3px", outline:"none", fontSize:13, color:C.soil }}/>
               </div>
-              <button onClick={handleAuth} disabled={authLoading} style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:12, padding:"13px", fontSize:14, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}>
+              <button type="button" onClick={handleAuth} disabled={authLoading} style={{ background:`linear-gradient(135deg,${C.leaf},${C.sprout})`, color:"#fff", border:"none", borderRadius:12, padding:"13px", fontSize:14, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8 }}>
                 {authLoading?<RefreshCw size={15} style={{ animation:"spin 0.8s linear infinite" }}/>:(authMode==="login"?"Log In":"Create Account")}
               </button>
             </div>
@@ -930,7 +930,7 @@ function ProfileScreen({ user, email, setEmail, password, setPassword, authMode,
               <ChevronRight size={15} color="#ddd"/>
             </div>
           ))}
-          <button onClick={() => signOut(auth)} style={{ width:"100%", background:"#FFF5F5", border:"1.5px solid #FFCDD2", color:"#C62828", borderRadius:13, padding:"13px", fontSize:13, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8, marginTop:4 }}>
+          <button type="button" onClick={() => signOut(auth)} style={{ width:"100%", background:"#FFF5F5", border:"1.5px solid #FFCDD2", color:"#C62828", borderRadius:13, padding:"13px", fontSize:13, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:8, marginTop:4 }}>
             <LogOut size={15}/> Sign Out
           </button>
         </div>
@@ -1167,12 +1167,12 @@ export default function App() {
           </div>
           <div style={{ display:"flex", gap:8, alignItems:"center" }}>
             {pendingAlarmsCount>0 && (
-              <button onClick={()=>setTab("diary")} style={{ background:"#FF9800", border:"none", borderRadius:20, padding:"4px 10px", cursor:"pointer", display:"flex", alignItems:"center", gap:4 }}>
+              <button type="button" onClick={()=>setTab("diary")} style={{ background:"#FF9800", border:"none", borderRadius:20, padding:"4px 10px", cursor:"pointer", display:"flex", alignItems:"center", gap:4 }}>
                 <AlarmClock size={12} color="#fff"/>
                 <span style={{ fontSize:10, color:"#fff", fontWeight:700 }}>{pendingAlarmsCount}</span>
               </button>
             )}
-            <button onClick={()=>setTab("profile")} style={{ background:"rgba(255,255,255,0.1)", border:"none", borderRadius:10, width:34, height:34, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
+            <button type="button" onClick={()=>setTab("profile")} style={{ background:"rgba(255,255,255,0.1)", border:"none", borderRadius:10, width:34, height:34, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
               {user?<CheckCircle size={17} color={C.lime}/>:<User size={17} color="rgba(255,255,255,0.75)"/>}
             </button>
           </div>
@@ -1187,7 +1187,7 @@ export default function App() {
             const active = tab===id;
             const badge  = id==="diary" ? pendingAlarmsCount : 0;
             return (
-              <button key={id} onClick={()=>setTab(id)} style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:3, background:"none", border:"none", cursor:"pointer", padding:"3px 8px", minWidth:50, position:"relative" }}>
+              <button type="button" key={id} onClick={()=>setTab(id)} style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:3, background:"none", border:"none", cursor:"pointer", padding:"3px 8px", minWidth:50, position:"relative" }}>
                 <div style={{ width:active?34:26, height:active?34:26, background:active?`linear-gradient(135deg,${C.leaf},${C.sprout})`:"transparent", borderRadius:active?10:7, display:"flex", alignItems:"center", justifyContent:"center", transition:"all 0.25s cubic-bezier(0.34,1.56,0.64,1)" }}>
                   <Icon size={active?17:19} color={active?"#fff":"#bbb"}/>
                 </div>
