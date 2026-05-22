@@ -1020,23 +1020,100 @@ export default function App() {
   };
 
   const sendMessage = async () => {
-    if (!input.trim() || chatLoading) return;
-    const txt = input.trim();
-    setMessages(p => [...p, { sender:"user", text:txt, time:new Date() }]);
-    setInput(""); setChatLoading(true);
-    try {
-      const res = await axios.post("https://openrouter.ai/api/v1/chat/completions",
-        { model:"deepseek/deepseek-chat:free", messages:[
-            { role:"system", content:"You are Farm-E AI, an expert farming assistant for Indian farmers. Help with crop management, soil health, pest control, irrigation, fertilizers, weather interpretation, and government schemes. Be practical, clear, and region-aware. Use bullet points for steps." },
-            ...messages.slice(-6).map(m=>({ role:m.sender==="user"?"user":"assistant", content:m.text })),
-            { role:"user", content:txt },
-          ]},
-        { headers:{ Authorization:`Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`, "HTTP-Referer":"https://farm-e.app", "X-Title":"Farm-E", "Content-Type":"application/json" }}
-      );
-      setMessages(p => [...p, { sender:"ai", text:res.data.choices[0].message.content, time:new Date() }]);
-    } catch { setMessages(p => [...p, { sender:"ai", text:"⚠️ Unable to reach AI. Check your connection.", time:new Date() }]); }
-    finally { setChatLoading(false); }
-  };
+  if (!input.trim() || chatLoading) return;
+
+  const txt = input.trim();
+
+  setMessages((p) => [
+    ...p,
+    {
+      sender: "user",
+      text: txt,
+      time: new Date(),
+    },
+  ]);
+
+  setInput("");
+  setChatLoading(true);
+
+  try {
+    const apiKey =
+      import.meta.env.VITE_OPENROUTER_API_KEY;
+
+    console.log("OPENROUTER KEY:", apiKey);
+
+    if (!apiKey) {
+      throw new Error("API key missing");
+    }
+
+    const res = await axios.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        model: "openai/gpt-oss-20b:free",
+
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are Farm-E AI farming assistant.",
+          },
+
+          ...messages.slice(-6).map((m) => ({
+            role:
+              m.sender === "user"
+                ? "user"
+                : "assistant",
+            content: m.text,
+          })),
+
+          {
+            role: "user",
+            content: txt,
+          },
+        ],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    console.log(res.data);
+
+    setMessages((p) => [
+      ...p,
+      {
+        sender: "ai",
+        text:
+          res.data.choices?.[0]?.message?.content ||
+          "No response",
+        time: new Date(),
+      },
+    ]);
+  } catch (err) {
+    console.error(err);
+    console.log(err.response?.data);
+
+    setMessages((p) => [
+      ...p,
+      {
+        sender: "ai",
+        text:
+          "⚠️ " +
+          (
+            err.response?.data?.error?.message ||
+            err.message ||
+            "Unable to reach AI"
+          ),
+        time: new Date(),
+      },
+    ]);
+  } finally {
+    setChatLoading(false);
+  }
+};
 
   const handleAuth = async () => {
     if (!email||!password) return alert("Enter email and password.");
