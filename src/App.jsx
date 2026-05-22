@@ -951,7 +951,7 @@ export default function App() {
   const [authMode, setAuthMode]   = useState("login");
   const [authLoading, setAuthLoading] = useState(false);
 
-  const [city, setCity]         = useState("Pune");
+  const [city, setCity]         = useState("Satara");
   const [weather, setWeather]   = useState(null);
   const [forecast, setForecast] = useState([]);
   const [wxLoading, setWxLoading] = useState(false);
@@ -994,8 +994,8 @@ export default function App() {
       try {
         const key = import.meta.env.VITE_WEATHER_API_KEY;
         const [w, f] = await Promise.all([
-          axios.get(`https://api.openweathermap.org/data/2.5/weather?q=Pune&appid=${key}&units=metric`),
-          axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=Pune&appid=${key}&units=metric`),
+          axios.get(`https://api.openweathermap.org/data/2.5/weather?q=Satara&appid=${key}&units=metric`),
+          axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=Satara&appid=${key}&units=metric`),
         ]);
         setWeather(w.data);
         setForecast(f.data.list.filter(i => i.dt_txt.includes("12:00:00")));
