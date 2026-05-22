@@ -992,7 +992,7 @@ export default function App() {
     const init = async () => {
       setWxLoading(true);
       try {
-        const key = secrets.VITE_WEATHER_API_KEY;
+        const key = import.meta.env.VITE_WEATHER_API_KEY;
         const [w, f] = await Promise.all([
           axios.get(`https://api.openweathermap.org/data/2.5/weather?q=Pune&appid=${key}&units=metric`),
           axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=Pune&appid=${key}&units=metric`),
@@ -1009,7 +1009,7 @@ export default function App() {
     if (!q.trim()) return;
     setWxLoading(true);
     try {
-      const key = secrets.VITE_WEATHER_API_KEY;
+      const key = import.meta.env.VITE_WEATHER_API_KEY;
       const [w, f] = await Promise.all([
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${q}&appid=${key}&units=metric`),
         axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${q}&appid=${key}&units=metric`),
@@ -1038,7 +1038,7 @@ export default function App() {
 
   try {
     const apiKey =
-      secrets.VITE_OPENROUTER_API_KEY;
+      import.meta.env.VITE_OPENROUTER_API_KEY;
 
     console.log("OPENROUTER KEY:", apiKey);
 
