@@ -963,9 +963,9 @@ export default function App() {
   }]);
   const [input, setInput]           = useState("");
   const [chatLoading, setChatLoading] = useState(false);
-  const msgEnd = useRef(null);
+  const msgEnd                        = useRef(null);
 
-  const [selCrop, setSelCrop] = useState(null);
+  const [selCrop, setSelCrop]         = useState(null);
 
   const [logs, setLogs] = useState(() => {
     try { return JSON.parse(localStorage.getItem("farmDiaryLogs") || "{}"); } catch { return {}; }
@@ -1026,7 +1026,7 @@ export default function App() {
     setInput(""); setChatLoading(true);
     try {
       const res = await axios.post("https://openrouter.ai/api/v1/chat/completions",
-        { model:"openai/gpt-oss-20b:free", messages:[
+        { model:"deepseek/deepseek-chat:free", messages:[
             { role:"system", content:"You are Farm-E AI, an expert farming assistant for Indian farmers. Help with crop management, soil health, pest control, irrigation, fertilizers, weather interpretation, and government schemes. Be practical, clear, and region-aware. Use bullet points for steps." },
             ...messages.slice(-6).map(m=>({ role:m.sender==="user"?"user":"assistant", content:m.text })),
             { role:"user", content:txt },
