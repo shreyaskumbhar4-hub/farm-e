@@ -195,7 +195,7 @@ We prioritize based on severity:
 
 ## Change Log
 
-- **v1.0** (2025): Initial security policy for Farm-E
+- **v1.0** (2026): Initial security policy for Farm-E
 
 ---
 
