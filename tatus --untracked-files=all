@@ -1,0 +1,179 @@
+[33mcommit 76c8c8ef5ca02673d8715cac4bfd04c959f346a4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Tue May 26 21:21:44 2026 +0530
+
+    SECURITY.md file created
+
+[33mcommit e555390122292c0b480fb291a9d4626038c92b80[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Tue May 26 21:12:07 2026 +0530
+
+    enhance SECURITY.md with comprehensive security best practices and vulnerability reporting guidelines
+
+[33mcommit 9eb72ddb6e61fe91191aca7ad89adb93a71fe239[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Tue May 26 20:57:38 2026 +0530
+
+    update README.md to provide comprehensive project overview, features, tech stack, installation instructions, and project structure
+
+[33mcommit dcfb3b704f2aae6bd38b3dea0cd021781df2dadf[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Fri May 22 23:18:36 2026 +0530
+
+    fix workflow
+
+[33mcommit 0071d5107d91c45b3fc1bb3d90d7e2d9077c9256[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Fri May 22 22:54:30 2026 +0530
+
+     fix problem of api and env file and make chenges to android-building file
+
+[33mcommit 0f9f986f0e1ff6c0b64d8c0837b7034e9c093649[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Fri May 22 22:40:42 2026 +0530
+
+     fix problem and make it build ready
+
+[33mcommit ff7964b11c672c02c5b235bbf93b3d8e67eea21e[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Fri May 22 21:58:37 2026 +0530
+
+    tempurary create the secrets path for api for app creation
+
+[33mcommit 80767c8c3e43f657a8cb9992a424efb65907f887[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Fri May 22 21:40:50 2026 +0530
+
+    small bug fix and working ai chat
+
+[33mcommit 54c8d388e97d0a7a25642edf86cc86acf476adc1[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Fri May 22 21:00:48 2026 +0530
+
+    solve the text area issue
+
+[33mcommit 3db0e81e5de7a2d3bfc19ba9f99bead5c6a0ad21[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Fri May 22 20:42:28 2026 +0530
+
+    solve the text area issue
+
+[33mcommit 997460678e0c09887bbc30628e96c5e21bf29d36[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Fri May 22 20:37:23 2026 +0530
+
+    solve the text area issue
+
+[33mcommit c97ee6cbf4da3a28ae33d6ee368acc9f5ef112d6[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Fri May 22 15:15:15 2026 +0530
+
+    fix search issue
+
+[33mcommit 3b71fb0ac665ddfeb56044e9802ea2da5cc8e782[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Fri May 22 01:10:34 2026 +0530
+
+    add secrets and hide api key
+
+[33mcommit f3444d62b128cb2922b7781bcb79573597e4f89e[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Thu May 21 23:19:13 2026 +0530
+
+       bug fix and create secrets
+
+[33mcommit 1bbd08c9016c6b417ef0fb4e13b2db3338b22191[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Thu May 21 21:16:25 2026 +0530
+
+     java  bug fix
+
+[33mcommit 46f12b3fc6955d901f854881cb936b8f9841c99c[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Thu May 21 21:11:18 2026 +0530
+
+     java  bug fix
+
+[33mcommit e4f0b211b60851ce64dfee864b2f2c561fadccae[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Thu May 21 20:58:49 2026 +0530
+
+     building apk bug fix
+
+[33mcommit 2488ace9f18c3c638abddec112bcc2c3fae49f84[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Thu May 21 20:27:11 2026 +0530
+
+    add new feature successfully ( document log )
+
+[33mcommit df3e9332e4fbba4c392b0caa51d25c3e4f862b5e[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 20:48:34 2026 +0530
+
+    bug fix
+
+[33mcommit 59a734c69a335cbf7077e26ab7306859ab4b97ad[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 20:21:35 2026 +0530
+
+    bug fix
+
+[33mcommit ef8e2bf07afa300790422f68cd03ebe701e7e94b[m
+Author: shreyas kumbhar <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 20:14:41 2026 +0530
+
+    Add GitHub Actions workflow for building Android APK
+
+[33mcommit 97f99c5964cb0b10c14c8ab01276eac97534a2f8[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 20:03:46 2026 +0530
+
+    bug fix
+
+[33mcommit 20fb62b18aa3bb47819dbc082290c11c133a71ce[m
+Author: shreyas kumbhar <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 19:39:02 2026 +0530
+
+    Delete .github/workflows directory
+
+[33mcommit e91939fae7433bcdf8410d5f97702ab358ce86d0[m
+Author: shreyas kumbhar <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 19:33:31 2026 +0530
+
+    Update android-build.yml
+
+[33mcommit c6e6810a81ca1e3905f3fd3bd8252050c2d88c0f[m
+Author: shreyas kumbhar <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 19:29:09 2026 +0530
+
+    Create android-build.yml
+
+[33mcommit 9dc7f9572f3121718cc18193604a2c11fc71366f[m
+Author: shreyas kumbhar <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 18:48:17 2026 +0530
+
+    Create SECURITY.md
+
+[33mcommit 086d86f728090bd1fa71f2e7b2796f01d2cd7343[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 18:19:31 2026 +0530
+
+    Added APK build workflow
+
+[33mcommit 2ca0c8ca062e8ea6c764a417207977bdafc3cce2[m
+Author: shreyaskumbhar4-hub <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 13:43:44 2026 +0530
+
+    initial commit
+
+[33mcommit 96f9b5cd8596eea48d01e6ea930918cd2067c705[m
+Author: shreyas kumbhar <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 17:58:11 2026 +0530
+
+    Delete README.md
+
+[33mcommit 59d258a85783ed94b0b4f939b027c2191130cc00[m
+Author: shreyas kumbhar <shreyaskumbhar4@gmail.com>
+Date:   Tue May 19 13:38:30 2026 +0530
+
+    Initial commit
