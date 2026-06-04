@@ -287,7 +287,7 @@ function AIScreen({ messages, input, setInput, sendMessage, chatLoading, msgEnd 
         {messages.length===1 && (
           <div style={{ display:"flex", flexDirection:"column", gap:7, marginBottom:6 }}>
             <p style={{ margin:0, fontSize:11, color:"#bbb", textAlign:"center" }}>Suggested questions</p>
-            {["How to treat rice blast disease?","Best fertilizer for wheat?","When to irrigate cotton?","Govt schemes for farmers 2024"].map(q => (
+            {["How to treat rice blast disease?","Best fertilizer for wheat?","When to irrigate cotton?","Govt schemes for farmers 2026"].map(q => (
               <button key={q} type="button" onClick={() => setInput(q)} style={{ background:C.mist, border:`1px solid ${C.fog}`, borderRadius:10, padding:"10px 13px", cursor:"pointer", textAlign:"left", fontSize:12, color:C.bark }}>{q}</button>
             ))}
           </div>
