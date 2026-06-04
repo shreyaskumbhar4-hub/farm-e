@@ -1019,6 +1019,75 @@ export default function App() {
     finally { setWxLoading(false); }
   };
 
+  // const sendMessage = async () => {
+  // if (!input.trim() || chatLoading) return;
+
+  // const txt = input.trim();
+
+  // setMessages((p) => [
+  //   ...p,
+  //   { sender: "user", text: txt, time: new Date() },
+  // ]);
+
+  // setInput("");
+  // setChatLoading(true);
+
+  // try {
+  //   const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
+
+  //   if (!apiKey) throw new Error("API key missing");
+
+  //   const res = await axios.post(
+  //     "https://openrouter.ai/api/v1/chat/completions",
+  //     {
+  //       model: "openai/gpt-oss-20b:free",
+  //       messages: [
+  //         {
+  //           role: "system",
+  //           content: "You are Farm-E, an expert AI farming assistant for Indian farmers. Help with crops, soil, diseases, irrigation, weather, and government schemes.",
+  //         },
+  //         ...messages.slice(-6).map((m) => ({
+  //           role: m.sender === "user" ? "user" : "assistant",
+  //           content: m.text,
+  //         })),
+  //         { role: "user", content: txt },
+  //       ],
+  //     },
+  //     {
+  //       headers: {
+  //         Authorization: `Bearer ${apiKey}`,
+  //         "Content-Type": "application/json",
+  //         "HTTP-Referer": "http://localhost:5173",
+  //         "X-Title": "Farm-E",
+  //       },
+  //     }
+  //   );
+
+  //   setMessages((p) => [
+  //     ...p,
+  //     {
+  //       sender: "ai",
+  //       text: res.data.choices?.[0]?.message?.content || "No response",
+  //       time: new Date(),
+  //     },
+  //   ]);
+  // } catch (err) {
+  //   console.error(err);
+  //   console.log(err.response?.data);
+
+  //   setMessages((p) => [
+  //     ...p,
+  //     {
+  //       sender: "ai",
+  //       text: "⚠️ " + (err.response?.data?.error?.message || err.message || "Unable to reach AI"),
+  //       time: new Date(),
+  //     },
+  //   ]);
+  // } finally {
+  //   setChatLoading(false);
+  // }
+  // };
+
   const sendMessage = async () => {
   if (!input.trim() || chatLoading) return;
 
@@ -1026,50 +1095,30 @@ export default function App() {
 
   setMessages((p) => [
     ...p,
-    {
-      sender: "user",
-      text: txt,
-      time: new Date(),
-    },
+    { sender: "user", text: txt, time: new Date() },
   ]);
 
   setInput("");
   setChatLoading(true);
 
   try {
-    const apiKey =
-      import.meta.env.VITE_OPENROUTER_API_KEY;
-
-    console.log("OPENROUTER KEY:", apiKey);
-
-    if (!apiKey) {
-      throw new Error("API key missing");
-    }
+    const apiKey = import.meta.env.VITE_GROQ_API_KEY;
+    if (!apiKey) throw new Error("Groq API key missing");
 
     const res = await axios.post(
-      "https://openrouter.ai/api/v1/chat/completions",
+      "https://api.groq.com/openai/v1/chat/completions",
       {
-        model: "openai/gpt-oss-20b:free",
-
+        model: "llama-3.3-70b-versatile",
         messages: [
           {
             role: "system",
-            content:
-              "You are Farm-E AI farming assistant.",
+            content: "You are Farm-E, an expert AI farming assistant for Indian farmers. Help with crops, soil, diseases, irrigation, weather, pest control, and government schemes. Be concise and practical.",
           },
-
           ...messages.slice(-6).map((m) => ({
-            role:
-              m.sender === "user"
-                ? "user"
-                : "assistant",
+            role: m.sender === "user" ? "user" : "assistant",
             content: m.text,
           })),
-
-          {
-            role: "user",
-            content: txt,
-          },
+          { role: "user", content: txt },
         ],
       },
       {
@@ -1080,33 +1129,21 @@ export default function App() {
       }
     );
 
-    console.log(res.data);
-
     setMessages((p) => [
       ...p,
       {
         sender: "ai",
-        text:
-          res.data.choices?.[0]?.message?.content ||
-          "No response",
+        text: res.data.choices?.[0]?.message?.content || "No response",
         time: new Date(),
       },
     ]);
   } catch (err) {
     console.error(err);
-    console.log(err.response?.data);
-
     setMessages((p) => [
       ...p,
       {
         sender: "ai",
-        text:
-          "⚠️ " +
-          (
-            err.response?.data?.error?.message ||
-            err.message ||
-            "Unable to reach AI"
-          ),
+        text: "⚠️ " + (err.response?.data?.error?.message || err.message || "Unable to reach AI"),
         time: new Date(),
       },
     ]);
@@ -1164,19 +1201,67 @@ export default function App() {
     setAddActOpen(false);
   };
 
+  // const addAlarm = () => {
+  //   if (!newAlarm.label.trim()) return alert("Enter alarm label.");
+  //   setLogAlarms(p=>[...p,{...newAlarm,id:Date.now(),done:false}]);
+  //   if (Notification.permission==="granted") {
+  //     const diff = new Date(diaryDate+"T"+newAlarm.time+":00") - new Date();
+  //     if (diff>0) setTimeout(()=>new Notification("🌾 Farm-E Alarm",{body:newAlarm.label}),diff);
+  //   }
+  //   setNewAlarm({time:"06:00",label:""}); setAddAlarmOpen(false);
+  // };
+
   const addAlarm = () => {
-    if (!newAlarm.label.trim()) return alert("Enter alarm label.");
-    setLogAlarms(p=>[...p,{...newAlarm,id:Date.now(),done:false}]);
-    if (Notification.permission==="granted") {
-      const diff = new Date(diaryDate+"T"+newAlarm.time+":00") - new Date();
-      if (diff>0) setTimeout(()=>new Notification("🌾 Farm-E Alarm",{body:newAlarm.label}),diff);
+  if (!newAlarm.label.trim()) return alert("Enter alarm label.");
+
+  const alarmObj = { ...newAlarm, id: Date.now(), done: false };
+  setLogAlarms(p => [...p, alarmObj]);
+
+  // Schedule notification
+  if ("Notification" in window) {
+    const scheduleAlarm = () => {
+      const alarmTime = new Date(diaryDate + "T" + newAlarm.time + ":00");
+      const now = new Date();
+      const diff = alarmTime - now;
+
+      if (diff > 0) {
+        setTimeout(() => {
+          if (Notification.permission === "granted") {
+            new Notification("🌾 Farm-E Reminder", {
+              body: newAlarm.label,
+              icon: "/favicon.ico",
+            });
+          } else {
+            alert("🌾 Farm-E Reminder: " + newAlarm.label);
+          }
+        }, diff);
+      } else {
+        alert("⚠️ Alarm time already passed. Set a future time.");
+      }
+    };
+
+    if (Notification.permission === "granted") {
+      scheduleAlarm();
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then(perm => {
+        if (perm === "granted") scheduleAlarm();
+        else alert("Allow notifications for alarms to work.");
+      });
+    } else {
+      alert("Notifications blocked. Enable in browser settings for alarms.");
     }
-    setNewAlarm({time:"06:00",label:""}); setAddAlarmOpen(false);
-  };
+  }
 
-  const requestNotifPerm = () => { if ("Notification" in window) Notification.requestPermission(); };
+  setNewAlarm({ time: "06:00", label: "" });
+  setAddAlarmOpen(false);
+};
 
-  const toggleAlarmDone = (id) => {
+  const requestNotifPerm = () => {
+  if ("Notification" in window && Notification.permission !== "granted") {
+    Notification.requestPermission();
+  }};
+
+    const toggleAlarmDone = (id) => {
     setLogAlarms(p=>p.map(a=>a.id===id?{...a,done:!a.done}:a));
     setLogs(p=>{ const day=p[diaryDate]; if(!day) return p; return {...p,[diaryDate]:{...day,alarms:day.alarms.map(a=>a.id===id?{...a,done:!a.done}:a)}}; });
   };
